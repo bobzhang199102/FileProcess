@@ -6,7 +6,7 @@ public class Test {
 		// Create a class fileProcess
 		FileProcess fileProcess = new FileProcess();
 		
-		fileProcess.processFile("./TestData2");
+		fileProcess.processFile("./TestData1");
 	}
 
 }

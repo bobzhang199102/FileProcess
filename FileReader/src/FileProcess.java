@@ -21,6 +21,14 @@ public class FileProcess {
 	private int count;
 	private double sum;
 	
+	public  boolean isFloat(String a)
+	{
+		if(a == null || "".equals(a)) return false;
+		Pattern pattern = Pattern.compile("[0-9]*(\\.?)[0-9]*");  
+        return pattern.matcher(a).matches(); 
+	}
+	
+	
 	public void processFile(String fileName)
 	{
 		// Create a file through
@@ -35,26 +43,16 @@ public class FileProcess {
 					String[] words=line.split(" ");
 				
 				for(int i = 0;i < words.length;i++){
-					if(words.length > 0){
 			    		String aword=words[i];
 			    		
-					    // Judge if it's a number
-			    		System.out.println("test1="+aword.charAt(0));
-			    		String a1=aword.charAt(0)+"";
-			    		String a2=aword.charAt(aword.length() - 1)+"";	 
+				  // Judge if it's a number
 			    		
-			    		// Create a pattern
-			    		Pattern pattern = Pattern.compile("[0-9]{1,}");  
-			    		
-				        Matcher matcher1 = pattern.matcher(a1);  
-				        Matcher matcher2=pattern.matcher(a2);
-				   if( matcher1.matches() && matcher2.matches())
+				   if( isFloat(aword))
 				   {
+					   System.out.println("test1="+aword);	 
 					   // If it is a number, add it to the arraylist
 					   numbers.add(Float.parseFloat(aword));  
 				   }
-				 
-			    }
 	
 			}
     }
